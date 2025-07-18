@@ -1,135 +1,122 @@
+import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Users, Calendar, TrendingUp, AlertTriangle } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Users, Plus, Settings, BarChart3 } from "lucide-react"
 
 export default function DashboardPage() {
-  const stats = [
-    {
-      title: "総顧客数",
-      value: "127",
-      description: "前月比 +12%",
-      icon: Users,
-      trend: "up"
-    },
-    {
-      title: "今月の予約",
-      value: "43",
-      description: "前月比 +8%",
-      icon: Calendar,
-      trend: "up"
-    },
-    {
-      title: "アクティブ顧客",
-      value: "89",
-      description: "前月比 +15%",
-      icon: TrendingUp,
-      trend: "up"
-    },
-    {
-      title: "要確認項目",
-      value: "3",
-      description: "重複チェック待ち",
-      icon: AlertTriangle,
-      trend: "neutral"
-    }
-  ]
-
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">ダッシュボード</h1>
+        <h1 className="text-3xl font-bold tracking-tight">顧客管理システム</h1>
         <p className="text-muted-foreground">
-          顧客管理システムの概要をご確認ください
+          美容・ファッション関連の顧客情報を管理できます
         </p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {stats.map((stat) => (
-          <Card key={stat.title}>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
-                {stat.title}
-              </CardTitle>
-              <stat.icon className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stat.value}</div>
-              <p className="text-xs text-muted-foreground">
-                {stat.description}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Users className="h-5 w-5 text-blue-500" />
+              <CardTitle>顧客管理</CardTitle>
+            </div>
+            <CardDescription>
+              顧客情報の登録・編集・削除ができます
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Button asChild className="w-full">
+                <Link href="/dashboard/customers">
+                  <Users className="h-4 w-4 mr-2" />
+                  顧客一覧を見る
+                </Link>
+              </Button>
+              <Button asChild variant="outline" className="w-full">
+                <Link href="/dashboard/customers/new">
+                  <Plus className="h-4 w-4 mr-2" />
+                  新規顧客登録
+                </Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <BarChart3 className="h-5 w-5 text-green-500" />
+              <CardTitle>統計・レポート</CardTitle>
+            </div>
+            <CardDescription>
+              顧客データの分析と統計情報
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="text-center py-4">
+              <p className="text-sm text-muted-foreground mb-4">
+                統計機能は今後追加予定です
               </p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>最近の活動</CardTitle>
-            <CardDescription>
-              システムでの最新の活動を確認できます
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="h-2 w-2 rounded-full bg-blue-500" />
-                <div className="flex-1 text-sm">
-                  新しい顧客「田中花子」が登録されました
-                </div>
-                <div className="text-xs text-muted-foreground">2分前</div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="h-2 w-2 rounded-full bg-green-500" />
-                <div className="flex-1 text-sm">
-                  予約「佐藤美咲」のメイクサービスが完了しました
-                </div>
-                <div className="text-xs text-muted-foreground">15分前</div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="h-2 w-2 rounded-full bg-yellow-500" />
-                <div className="flex-1 text-sm">
-                  重複顧客の可能性があります - 確認が必要
-                </div>
-                <div className="text-xs text-muted-foreground">1時間前</div>
-              </div>
+              <Button disabled variant="outline" className="w-full">
+                <BarChart3 className="h-4 w-4 mr-2" />
+                近日公開
+              </Button>
             </div>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>今週の予定</CardTitle>
+            <div className="flex items-center gap-2">
+              <Settings className="h-5 w-5 text-gray-500" />
+              <CardTitle>システム設定</CardTitle>
+            </div>
             <CardDescription>
-              今週予定されているサービスの概要
+              システムの設定と管理
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              <div className="flex justify-between items-center">
-                <div>
-                  <div className="font-medium">メイクサービス</div>
-                  <div className="text-sm text-muted-foreground">15件</div>
-                </div>
-                <div className="text-2xl font-bold">15</div>
-              </div>
-              <div className="flex justify-between items-center">
-                <div>
-                  <div className="font-medium">ヘアサービス</div>
-                  <div className="text-sm text-muted-foreground">12件</div>
-                </div>
-                <div className="text-2xl font-bold">12</div>
-              </div>
-              <div className="flex justify-between items-center">
-                <div>
-                  <div className="font-medium">ファッション相談</div>
-                  <div className="text-sm text-muted-foreground">8件</div>
-                </div>
-                <div className="text-2xl font-bold">8</div>
-              </div>
+            <div className="text-center py-4">
+              <p className="text-sm text-muted-foreground mb-4">
+                設定機能は今後追加予定です
+              </p>
+              <Button disabled variant="outline" className="w-full">
+                <Settings className="h-4 w-4 mr-2" />
+                近日公開
+              </Button>
             </div>
           </CardContent>
         </Card>
       </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>ようこそ</CardTitle>
+          <CardDescription>
+            システムの基本機能から始めて、段階的に機能を追加していきます
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-2 text-sm">
+            <div className="flex items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-green-500" />
+              <span>✅ 顧客情報の管理（追加・編集・削除）</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-yellow-500" />
+              <span>🚧 統計・レポート機能（開発予定）</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-yellow-500" />
+              <span>🚧 予約管理機能（開発予定）</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-yellow-500" />
+              <span>🚧 認証・ユーザー管理（開発予定）</span>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 }

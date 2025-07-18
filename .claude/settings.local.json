@@ -9,7 +9,9 @@
       "Bash(cp:*)",
       "Bash(find:*)",
       "Bash(tree:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(node:*)",
+      "Bash(vercel env:*)"
     ],
     "deny": []
   }
