@@ -5,12 +5,7 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { 
   Users, 
-  Calendar, 
-  Settings, 
-  BarChart3, 
-  Mail,
-  Home,
-  AlertTriangle
+  Home
 } from "lucide-react"
 
 interface SidebarProps {
@@ -28,31 +23,6 @@ const navigation = [
     name: "顧客管理",
     href: "/dashboard/customers",
     icon: Users,
-  },
-  {
-    name: "予約管理",
-    href: "/dashboard/reservations",
-    icon: Calendar,
-  },
-  {
-    name: "連携ログ",
-    href: "/dashboard/integration/logs",
-    icon: Mail,
-  },
-  {
-    name: "重複チェック",
-    href: "/dashboard/integration/duplicates",
-    icon: AlertTriangle,
-  },
-  {
-    name: "分析",
-    href: "/dashboard/analytics",
-    icon: BarChart3,
-  },
-  {
-    name: "設定",
-    href: "/dashboard/settings",
-    icon: Settings,
   },
 ]
 

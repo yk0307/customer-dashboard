@@ -11,7 +11,9 @@
       "Bash(tree:*)",
       "Bash(rm:*)",
       "Bash(node:*)",
-      "Bash(vercel env:*)"
+      "Bash(vercel env:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": []
   }

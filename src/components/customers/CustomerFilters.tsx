@@ -68,7 +68,6 @@ export function CustomerFilters({
               <SelectValue placeholder="全てのプラン" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">全てのプラン</SelectItem>
               {PLANS.map((plan) => (
                 <SelectItem key={plan} value={plan}>
                   {plan}
@@ -85,7 +84,6 @@ export function CustomerFilters({
               <SelectValue placeholder="全てのステータス" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">全てのステータス</SelectItem>
               {STATUSES.map((status) => (
                 <SelectItem key={status} value={status}>
                   {status}
